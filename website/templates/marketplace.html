@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block title %}Marketplace{% endblock %} {% block content
+    %}
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mp.css') }}"> 
+    <meta charset="UTF-8">
+
+
+
+
+    {% for immo in immos %}
+    <a href="/viewbuy?offerId={{immo[9]}}"">
+
+        <div class="box-form">
+            <tr>
+                <td>
+
+                    <div class="left">
+                        <div class="card">
+                            <div class ="imgcover">
+                            <img class = "myimg" src="{{url_for('static', filename = "images/"+immo[8] )}}" alt="Sandwich" style="width:100%">       
+                         </div> 
+                         <p>{{immo[4]}}</p>
+                         </div>  
+                            
+                    </div>
+
+                </td>
+               
+                <td>
+                    <div class="right">
+                        <h4>{{immo[10]}}</h4>
+                                <h5>Preis per Token: {{immo[5]}} €</h5>
+                                <h5>Verfügbare Tokens: {{immo[7]}} / {{immo[6]}}</h5>
+                                <h5>Lage: {{immo[0]}} {{immo[3]}} 
+                                <br>  
+                                    in {{immo[2]}} {{immo[1]}} </h5>
+                        
+                        
+                    
+                    </div>
+                </td>
+                
+
+            </tr>
+            
+           
+            
+          </div>
+
+        </a>
+        
+      
+    {% endfor %}
+
+
+    
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %} {% block title %}Chain deine Domain{% endblock %} {% block content
+    %}
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card1.css') }}"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    </style>
+    {% for ass in assets %}
+        <div class="card">
+            <div class="container">
+                <h4>{{ass[2]}}</h4>
+
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Erworben am</th>
+                        <th>{{ass[3]}}</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Kaufpreis: </td>
+                        <td>{{ass[1]}} €</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>Original Preis: </td>
+                        <td>{{ass[4]}} €</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>Gesamtzahl Tokens: </td>
+                        <td>{{ass[5]}}</td>
+                        
+                      </tr>
+                      <tr>
+                          <td>Deine Tokens: </td>
+                          <td>{{ass[0]}}</td>
+                          
+                        </tr>
+                        <tr>
+                            <td>Letzter Verkaufspreis:  </td>
+                            <td>{{ass[7]}}</td>
+                            
+                          </tr>
+                        
+                    </tbody>
+                  </table>
+
+                  <div class="form-group" style="max-width:100%">
+                    
+                    <form action = "{{ url_for('auth.assets') }}" method = "POST" name="sell" id="sell" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Verkaufsmenge: </h5>
+                    <input type="number" id="am_sell" name="am_sell" min="1" max="{{ass[0]}}" required> <br>
+                    <h5>Preis: </h5>
+                    <input type="number" id="price" name="price" min="1" max="10000000000" required><br>
+                    <input type="hidden" id="propId" name="propId" value ="{{ass[8]}}"required><br>
+                    <input type="hidden" id="besitzId" name="besitzId" value ="{{ass[9]}}"required><br>
+        
+                            </div>
+                            <div class="col">
+
+                                <button type="submit" class="btn" name="submit">Verkaufen</button>
+                            </div>
+                          </div>
+                    
+                    
+                    
+                    <!--codeAddress(this.form)-->
+                </form>
+            </div>
+
+                
+                
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

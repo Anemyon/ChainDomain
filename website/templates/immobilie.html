@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block title %}Chain deine Domain{% endblock %} {% block content
+    %}
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mp.css') }}"> 
+    <meta charset="UTF-8">
+    <div class="card">
+        <img class="center" src="{{url_for('static', filename = "images/"+for_view[11] )}}">
+
+        <div class="container">
+
+            <div class="container">
+                <h2>{{for_view[12]}}</h2>
+                <p>Verkäufer: {{for_view[1]}}</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Preis per Token</th>
+                      <th>{{for_view[0]}} €</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lage</td>
+                      <td>{{for_view[4]}} {{for_view[5]}} in {{for_view[7]}} {{for_view[6]}}</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Gesamtzahl der Tokens</td>
+                      <td>{{for_view[10]}}</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Verfügbare Tokens</td>
+                      <td>{{for_view[2]}}</td>
+                      
+                    </tr>
+                    <tr>
+                        <td>Original Preis</td>
+                        <td>{{for_view[9]}}</td>
+                        
+                      </tr>
+                      
+                  </tbody>
+                </table>
+                <p>{{for_view[8]}}</p>
+                
+                <div class="form-group" style="max-width:100%">
+                    
+                    <form action = "{{ url_for('auth.viewbuy') }}" method = "POST" name="kaufen" id="kaufen" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col">
+                                <label for="menge_tokens">Wie viele Tokens willst du?</label>
+                    <input type="number" id="menge_tokens" name="menge_tokens" min="1" max="{{for_view[2]}}" required><br>
+                    <input type="hidden" class="form-control" id="offerId" name="offerId" value ="{{for_view[13]}}"required><br>
+        
+                            </div>
+                            <div class="col">
+
+                                <button type="submit" class="btn" name="submit">Erwerben</button>
+                            </div>
+                          </div>
+                    
+                    
+                    
+                    <!--codeAddress(this.form)-->
+                </form>
+            </div>
+              </div>
+              
+                
+                
+              
+           
+        </div>
+    </div>
+{% endblock %}
